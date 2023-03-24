@@ -1,12 +1,48 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Tax</title>
   </head>
-  <body>
-    <div></div>
+
+  <body
+    style="
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    "
+  >
+    Enter your annual Salary:
+    <input type="number" id="num" style="margin: 1em" /> <br />
+    <button onclick="Tax()">Calculate</button><br />
+    <textarea id="value" cols="30" rows="10"></textarea>
+    <script>
+      function Tax() {
+        var sal = parseInt(document.getElementById("num").value);
+        if (sal <= 250000) {
+          var salary = "No tax";
+        } else if (sal > 250000 && sal <= 500000) {
+          var salary = "Your tax is Rs " + parseFloat((sal - 250000) * 0.05);
+        } else if (sal > 500000 && sal <= 750000) {
+          var salary =
+            "Your tax is Rs " + parseFloat((sal - 500000) * 0.1 + 12500);
+        } else if (sal > 750000 && sal <= 1000000) {
+          var salary =
+            "Your tax is Rs " + parseFloat((sal - 750000) * 0.15 + 37500);
+        } else if (sal > 1000000 && sal <= 1250000) {
+          var salary =
+            "Your tax is Rs " + parseFloat((sal - 1000000) * 0.2 + 75000);
+        } else if (sal > 1250000 && sal < 1500000) {
+          var salary =
+            "Your tax is Rs " + parseFloat((sal - 1250000) * 0.25 + 125000);
+        } else {
+          var salary =
+            "Your tax is Rs " + parseFloat((sal - 1500000) * 0.3 + 187500);
+        }
+        document.getElementById("value").innerText = `${salary}`;
+      }
+    </script>
   </body>
 </html>
